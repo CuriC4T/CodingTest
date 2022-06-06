@@ -1,8 +1,8 @@
 #!/bin/sh
 cd /config/workspace/codingTest/
-fileCheck = $(git status -s)
-echo "$(filecheck)"
-if [ -z "$(fileCheck)"];then
+fileCheck=$(git status -s)
+echo "$fileCheck"
+if [ -z "$fileCheck"];then
        echo "not changed"
 	exit
 fi
