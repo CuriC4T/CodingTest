@@ -16,7 +16,7 @@ public class StackEx {
      * 제거할 수 있으므로 1
      * 을 반환합니다.
      */
-
+    // [ 완료 ]
     public int removePair(String s) {
         if (s.length() < 2) {
             return 0;
@@ -35,4 +35,6 @@ public class StackEx {
         }
         return stack.empty() ? 1 : 0;
     }
+
+    
 }

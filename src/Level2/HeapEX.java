@@ -23,8 +23,9 @@ public class HeapEX {
      * 
      * 모든 음식의 스코빌 지수가 7 이상이 되었고 이때 섞은 횟수는 2회입니다.
      */
+    // 최소 힘을 이용(자바에서 우선순위큐를 제공)
     public int getScoville(int[] scoville, int K) {
-        int answer = 0;
+        int answer = 1;
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
         for (int temp : scoville) {
             priorityQueue.offer(temp);
@@ -41,6 +42,45 @@ public class HeapEX {
         }
 
         return answer;
+    }
+
+    public int printPriority(int[] priorities, int location) {
+        int standard = priorities[location];
+        int count = 1;
+        boolean flag = false;
+        ArrayList<Integer> list = new ArrayList();
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
+        // 데이터 세팅
+        for (int temp : priorities) {
+            priorityQueue.offer(temp);
+            list.add(temp);
+        }
+
+        // 기준보다 높은 데이터 갯수 확인
+        while (priorityQueue.remove() > standard) {
+            count++;
+
+        }
+        // 만일 기준이 제일 높은 값이라면
+        if (count > 1) {
+            // 기준보다 앞에 있는 같은 값의 갯수 확인
+            for (int i = 0; i < location; i++) {
+                int data = list.get(i);
+                if (data == standard)
+                    count++;
+            }
+            // 기준보다 뒤에 있는 같은 값의 갯수 확인
+            for (int i = location +1 ; i < list.size(); i++) {
+                int data = list.get(i);
+                if (data > standard)
+                    flag = true;
+                if (flag && data == standard)
+                    count++;
+
+            }
+        }
+
+        return count;
     }
 
 }
