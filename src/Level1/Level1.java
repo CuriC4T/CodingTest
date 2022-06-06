@@ -40,4 +40,13 @@ public class Level1 {
         }
         return answer;
     }
+
+    //numbers에서 찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 더한 수를 return
+    public int addNoNum(int[] numbers) {
+        int answer = 45;
+        for(int temp : numbers){
+            answer -= temp;
+        }
+        return answer;
+    }
 }
