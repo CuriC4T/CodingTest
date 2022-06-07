@@ -26,6 +26,7 @@ public class HeapEX {
     // 최소 힘을 이용(자바에서 우선순위큐를 제공)
     public int getScoville(int[] scoville, int K) {
         int answer = 1;
+
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
         for (int temp : scoville) {
             priorityQueue.offer(temp);
@@ -48,6 +49,7 @@ public class HeapEX {
         int standard = priorities[location];
         int count = 1;
         boolean flag = false;
+        int same;
         ArrayList<Integer> list = new ArrayList();
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
         // 데이터 세팅
@@ -70,7 +72,7 @@ public class HeapEX {
                     count++;
             }
             // 기준보다 뒤에 있는 같은 값의 갯수 확인
-            for (int i = location +1 ; i < list.size(); i++) {
+            for (int i = location + 1; i < list.size(); i++) {
                 int data = list.get(i);
                 if (data > standard)
                     flag = true;
@@ -78,9 +80,37 @@ public class HeapEX {
                     count++;
 
             }
+        } else {
+
         }
 
         return count;
     }
 
+    //우선순위가 있는 프린터
+    public int printPriority_2(int[] priorities, int location) {
+        int answer = 1;
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
+        // 데이터 세팅
+        for (int temp : priorities) {
+            priorityQueue.offer(temp);
+        }
+        while(!priorityQueue.isEmpty()) {
+            for (int i = 0 ;i<priorities.length; i++) {
+                // 입력 순서를 가지고 있는 배열과
+                // 우선 순위로 정렬된 배열을 비교하며
+                // 우선 순위 큐를 지워 나감
+                // 이후 해당 index의 값이면 리턴
+                if(priorityQueue.peek()==priorities[i]){
+                    if(i == location){
+                        return answer;
+                    }
+                    answer++;
+                    priorityQueue.poll();
+
+                }
+            }
+        }
+        return answer;
+    }
 }
