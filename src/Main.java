@@ -13,9 +13,11 @@ public class Main {
         // }
 
         HeapEX heapEX = new HeapEX();
-        int result = heapEX.printPriority(new int[]{1,1,1,1,1,1}, 3);
+        // int result = heapEX.printPriority_2(new int[]{2,1,3,2}, 2);
+        // println(result);
+
+        boolean result = Level2.checkPrefix(new String[]{"334","123","12","592","1222"});
         println(result);
-            
     }
 
     public static void println(Object data){
