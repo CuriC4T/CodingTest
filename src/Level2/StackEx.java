@@ -36,5 +36,44 @@ public class StackEx {
         return stack.empty() ? 1 : 0;
     }
 
+    //큰 수 만들기
+    // 주어진 수에서 왼쪽부터 k개의 숫자를 뻇을떄 가장 큰 수는?
+    //ex 1231234 3 => 3234
+    //!! 정답이긴 한데
+    // 스텍을 활용해서 다시 풀어보기
+    public String makeBigNum(String number, int k) {
+        StringBuffer sb = new StringBuffer();
+        int[] nums = new int[number.length()];
+        
+        int max = -1;
+        int maxIndex = -1;
+        
+        int start = 0;
+        int end = k+1;
+
+        for (int i = 0; i < number.length(); i++) {
+            nums[i] = Character.getNumericValue(number.charAt(i));
+        }
+    
+        System.out.println(start+" "+end+" "+max);
+
+        for (int i = 0; i < nums.length-k; i++) {
+            for (; start < end; start++) {
+                if (max < nums[start]) {
+                    max = nums[start];
+                    maxIndex = start;
+                }
+            }
+            start = maxIndex + 1;
+            end++;
+            sb.append(max);
+
+            System.out.println(start+" "+end+" "+max);
+
+            max = -1;
+        }
+        return sb.toString();
+    }
+
     
 }
