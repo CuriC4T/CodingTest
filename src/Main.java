@@ -16,7 +16,17 @@ public class Main {
         // int result = heapEX.printPriority_2(new int[]{2,1,3,2}, 2);
         // println(result);
 
-        boolean result = Level2.checkPrefix(new String[]{"334","123","12","592","1222"});
+        //미해결
+        // boolean result = Level2.checkPrefix(new String[]{"334","123","12","592","1222"});
+        // println(result);
+
+    
+        //
+        SortEX sortEX = new SortEX();
+        //String result = sortEX.makeBigNum(new int[]{10, 0, 0, 15, 9});
+        
+
+        String result = stackEx.makeBigNum("4177252841",4);
         println(result);
     }
 

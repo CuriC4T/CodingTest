@@ -128,18 +128,30 @@ public class Level2 {
     public boolean checkPrefix(String[] phone_book) {
         // 효율성 3,4번 걸림
         // if (phone_book.length == 1)
-        //     return false;
+        // return false;
         // Arrays.sort(phone_book);
         // for (int i = 0; i < phone_book.length; i++) {
-        //     for (int j = i + 1; j < phone_book.length; j++) {
-        //         if (phone_book[j].startsWith(phone_book[i])) {
-        //             return false;
-        //         }
-        //     }
+        // for (int j = i + 1; j < phone_book.length; j++) {
+        // if (phone_book[j].startsWith(phone_book[i])) {
+        // return false;
+        // }
+        // }
         // }
 
-        //Arrays.sort(phone_book, new Comparator<String>(){};
+        // Arrays.sort(phone_book, new Comparator<String>(){};
 
         return true;
     }
+
+    // String S = "No one could disentangle correctly";
+    // String W[] = S.split(" ");
+    // Arrays.sort(W, new java.util.Comparator<String>() {
+    // @Override
+    // public int compare(String s1, String s2) {
+    // // TODO: Argument validation (nullity, length)
+    // return s1.length() - s2.length();// comparision
+    // }
+    // });
+
+    
 }
