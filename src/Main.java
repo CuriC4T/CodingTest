@@ -26,7 +26,10 @@ public class Main {
         //String result = sortEX.makeBigNum(new int[]{10, 0, 0, 15, 9});
         
 
-        String result = stackEx.makeBigNum("4177252841",4);
+        // String result = stackEx.makeBigNum("4177252841",4);
+        // println(result);
+        String[] test = new String[]{"BACDE","CBADF","AEFCB","BDA"};
+        int result = Level2.skillTree("CBD",test);
         println(result);
     }
 

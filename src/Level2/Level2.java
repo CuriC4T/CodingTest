@@ -153,5 +153,101 @@ public class Level2 {
     // }
     // });
 
-    
+    // 시간초과
+    public int nextBigNum(int n){
+        String binaryString = Integer.toBinaryString(n);
+        int count = 0;
+        for (char temp : binaryString.toCharArray()) {
+            if(temp=='1'){
+                count++;
+            }
+        }
+        System.out.println(count);
+        while(true){
+            int temp_count = 0;
+            String binaryString_2 = Integer.toBinaryString(++n);
+            for (char temp : binaryString_2.toCharArray()) {
+                if(temp=='1'){
+                    temp_count++;
+                }
+            }
+            if(count==temp_count) return n;
+
+        }
+    }
+
+    public int nextBigNum_2(int n){
+        String binaryString = Integer.toBinaryString(n);
+        char[] binary;
+        
+        int count = 0;
+
+        int index = binaryString.lastIndexOf("01");
+
+        System.out.println(binaryString +" "+index);
+        
+        if(index==-1){
+            binary=new char[binaryString.length()+1];
+            binary[0]=1;
+            binary[1]=0;
+            for(int l = 2 ;l<binaryString.length();l++ ){
+                binary[l] = 1;
+            }
+        }else{
+            binary = binaryString.toCharArray();
+
+            binary[index]=1;
+            binary[index+1]=0;
+            if(index+2<binary.length){
+                for(int j = index+2 ;j<binary.length;j++){
+                    if(binary[j]==1){
+                        count++;
+                        binary[j] = 0;
+                    }
+                }
+                for(int k = binary.length-1 ;k< (binary.length - count);k--){
+                    binary[k] = 1;
+                }
+            }
+        }
+        System.out.println(binary[0]);
+
+        return Integer.parseInt(new String(binary));
+            
+        
+    }
+
+    public int skillTree(String skill, String[] skill_trees){
+        int answer = 0;
+        int index = 0;
+        int min = -1;
+        boolean flag = false;
+
+        char[] skills = skill.toCharArray();
+        for(int j = 0 ;j<skill_trees.length;j++){
+            for(int i = 0 ;i<skills.length;i++){
+                index = skill_trees[j].indexOf(skills[i]);
+                System.out.println(j+" "+index+" "+min);
+                if(index == -1){
+                    if(i==0) break;
+                    if(flag == true){
+                        break;
+                    }else{
+                        flag = true;
+                    }
+                }else{
+                    if(index > min){
+                        min = index;
+                    }else{
+                        break;
+                    }
+                }
+                if(i==skills.length){
+                    answer ++;
+                }
+            }
+            flag = false;
+        }
+        return answer;
+    }
 }

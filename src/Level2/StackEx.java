@@ -75,5 +75,33 @@ public class StackEx {
         return sb.toString();
     }
 
+    // // 시간 초과
+    // public int nextBigNum(int n){
+    //     int num = numOfOne(n);
+    //     while(true){
+    //         int temp = numOfOne(++n);
+    //         if(num == temp){
+    //             return n;
+    //         }
+    //     }
+        
+    // }
+
+    // private int numOfOne(int n){
+    //     Stack<Integer> stack = new Stack<>();
+    //     int count = 0;
+    //     while(n>1){
+    //         int i = n%2;
+    //         n=n/2;
+    //         stack.add(i);
+    //     }
+    //     stack.add(n);
+    //     while(!stack.isEmpty()){
+    //         int temp = stack.pop();
+    //         if(temp == 1 ) count++;
+    //     }
+    //     return count ;
+    // }
+
     
 }
