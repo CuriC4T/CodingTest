@@ -29,7 +29,8 @@ public class Main {
         // String result = stackEx.makeBigNum("4177252841",4);
         // println(result);
         String[] test = new String[]{"BACDE","CBADF","AEFCB","BDA"};
-        int result = Level2.skillTree("CBD",test);
+        test = new String[]{"C","AVCB","BD","B"};
+        int result = stackEx.skillTree("CBD",test);
         println(result);
     }
 
