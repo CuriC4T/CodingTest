@@ -124,25 +124,7 @@ public class Level2 {
         return answer;
     }
 
-    // 길이 정렬 안되어있어서 순차로 startsWith 사용하면 안됨
-    // + 이중 포문 비교는 효율성에서 걸림
-    public boolean checkPrefix(String[] phone_book) {
-        // 효율성 3,4번 걸림
-        // if (phone_book.length == 1)
-        // return false;
-        // Arrays.sort(phone_book);
-        // for (int i = 0; i < phone_book.length; i++) {
-        // for (int j = i + 1; j < phone_book.length; j++) {
-        // if (phone_book[j].startsWith(phone_book[i])) {
-        // return false;
-        // }
-        // }
-        // }
-
-        // Arrays.sort(phone_book, new Comparator<String>(){};
-
-        return true;
-    }
+    
 
     // String S = "No one could disentangle correctly";
     // String W[] = S.split(" ");
@@ -178,45 +160,68 @@ public class Level2 {
         }
     }
 
+    //테스트 110 -> 1001 걸렸음
+    //해결
+    //bitCount()와
+    //int postPattern = n & -n, smallPattern = ((n ^ (n + postPattern)) / postPattern) >> 2;
+    //return n + postPattern | smallPattern;
+    // 참고
     public int nextBigNum_2(int n) {
         String binaryString = Integer.toBinaryString(n);
-        char[] binary;
-
+        char[] binarys = binaryString.toCharArray();
         int count = 0;
+        int index =binaryString.lastIndexOf("01");
+        System.out.println(binaryString);
 
-        int index = binaryString.lastIndexOf("01");
-
-        System.out.println(binaryString + " " + index);
-
-        if (index == -1) {
-            binary = new char[binaryString.length() + 1];
-            binary[0] = 1;
-            binary[1] = 0;
-            for (int l = 2; l < binaryString.length(); l++) {
-                binary[l] = 1;
+        if ( index == -1) {
+            char[] temp = new char[binarys.length+1];
+            Arrays.fill(temp, '0');
+            for(int i = 1 ;i<binarys.length;i++){
+                if(binarys[i]=='1'){
+                    count++;
+                }
             }
-        } else {
-            binary = binaryString.toCharArray();
+            for(int i = temp.length-1 ;i>temp.length-count-1;i--){
+                temp[i] = '1';
+            }
 
-            binary[index] = 1;
-            binary[index + 1] = 0;
-            if (index + 2 < binary.length) {
-                for (int j = index + 2; j < binary.length; j++) {
-                    if (binary[j] == 1) {
+            temp[0] = '1';
+            temp[1] = '0';
+            // if(binarys[1]=='0'){
+            //     for(int k = 2 ;k<temp.length;k++){
+            //         temp[k] = '0';
+            //     }
+            // }else{
+            //     for(int k = 2 ;k<temp.length;k++){
+            //         temp[k] = '1';
+            //     }
+            // }
+            
+            binarys = temp;
+        } else {
+            if(binarys.length>index+1){
+                for(int i = index+2 ;i<binarys.length;i++){
+                    if(binarys[i]=='1'){
                         count++;
-                        binary[j] = 0;
+                        binarys[i]='0';
                     }
                 }
-                for (int k = binary.length - 1; k < (binary.length - count); k--) {
-                    binary[k] = 1;
+
+                for(int j = binarys.length-1 ;j>binarys.length-count-1;j--){
+                    binarys[j]='1';
                 }
             }
-        }
-        System.out.println(binary[0]);
+            
+            binarys[index]='1';
+            binarys[index+1]='0';
+            
 
-        return Integer.parseInt(new String(binary));
+        }
+        System.out.println(String.valueOf(binarys));
+
+        System.out.println(Integer.parseInt(String.valueOf(binarys),2));
+        return Integer.parseInt(String.valueOf(binarys),2);
 
     }
 
-    
 }

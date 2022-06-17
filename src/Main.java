@@ -1,3 +1,4 @@
+import Level1.BFS;
 import Level2.*;
 public class Main {
     public static void main(String[] args){
@@ -30,8 +31,15 @@ public class Main {
         // println(result);
         String[] test = new String[]{"BACDE","CBADF","AEFCB","BDA"};
         test = new String[]{"C","AVCB","BD","B"};
-        int result = stackEx.skillTree("CBD",test);
-        println(result);
+        //int result = stackEx.skillTree("CBD",test);
+        //println(result);
+
+        //int result_2 = Level2.nextBigNum_2(6);
+        //println(result_2);
+
+        BFS bfs = new BFS();
+        int count = bfs.farthest(6, new int[][]{{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}});
+        println(count);
     }
 
     public static void println(Object data){
