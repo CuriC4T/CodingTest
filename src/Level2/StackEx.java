@@ -1,5 +1,6 @@
 package Level2;
 
+import java.lang.Thread.State;
 import java.util.*;
 
 public class StackEx {
@@ -149,6 +150,25 @@ public class StackEx {
 
         }
 
+        return answer;
+    }
+
+    public boolean Bracket(String s ){
+        boolean answer = true;
+        char[] charArray = s.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        for(int i = 0 ; i< charArray.length;i++){
+            char temp = charArray[i];
+            if(temp == '('){
+                stack.push(temp);
+            }else{
+                if(!stack.isEmpty()) stack.pop();
+                else{
+                    return false;
+                }
+            }
+        }
+        if(!stack.isEmpty()) answer = false;
         return answer;
     }
 
