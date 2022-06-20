@@ -1,5 +1,6 @@
 package Level2;
 
+import java.lang.Thread.State;
 import java.util.*;
 
 public class StackEx {
@@ -102,6 +103,74 @@ public class StackEx {
     //     }
     //     return count ;
     // }
+
+    public int skillTree(String skill, String[] skill_trees) {
+        int answer = 0;
+        boolean flag = true;
+        Stack<Integer> stack = new Stack<>();
+
+        char[] skills = skill.toCharArray();
+        for (int j = 0; j < skill_trees.length; j++) {
+            for (int i = 0; i < skills.length; i++) {
+                int index = skill_trees[j].indexOf(skills[i]);
+                stack.push(index);
+            }
+
+            int top = stack.pop();
+            while (!stack.isEmpty()) {
+                int temp = stack.pop();
+                if (top == -1) {
+                    // if (temp > -1) {
+                    //     flag = false;
+                    //     break;
+                    // }
+                } else {
+                    if(temp == -1){
+                        flag = false;
+                            break;
+                    }else{
+                        if (temp > top) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    
+                }
+
+                top = temp;
+            }
+            if (flag){
+                System.out.println(j);
+
+                answer++;
+            }
+            flag = true;
+
+            stack.removeAllElements();
+
+        }
+
+        return answer;
+    }
+
+    public boolean Bracket(String s ){
+        boolean answer = true;
+        char[] charArray = s.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        for(int i = 0 ; i< charArray.length;i++){
+            char temp = charArray[i];
+            if(temp == '('){
+                stack.push(temp);
+            }else{
+                if(!stack.isEmpty()) stack.pop();
+                else{
+                    return false;
+                }
+            }
+        }
+        if(!stack.isEmpty()) answer = false;
+        return answer;
+    }
 
     
 }

@@ -1,4 +1,5 @@
 import Level2.*;
+import Level3.BFS;
 public class Main {
     public static void main(String[] args){
         System.out.println("Coding Test Project");
@@ -29,7 +30,20 @@ public class Main {
         // String result = stackEx.makeBigNum("4177252841",4);
         // println(result);
         String[] test = new String[]{"BACDE","CBADF","AEFCB","BDA"};
-        int result = Level2.skillTree("CBD",test);
+        test = new String[]{"C","AVCB","BD","B"};
+        //int result = stackEx.skillTree("CBD",test);
+        //println(result);
+
+        //int result_2 = Level2.nextBigNum_2(6);
+        //println(result_2);
+
+        BFS bfs = new BFS();
+        //int count = bfs.farthest(6, new int[][]{{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}});
+        //println(count);
+        
+        //long result = Level2.maxExpression("100-200*300-500+20");
+        //long result = Level2.maxExpression("177-661*999*99-133+221+334+555-166-144-551-166*166-166*166-133*88*55-11*4+55*888*454*12+11-66+444*99");
+        long result = Level2.LCM(new int[]{2,6,8,14});
         println(result);
     }
 
