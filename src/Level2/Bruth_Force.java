@@ -1,3 +1,4 @@
+package Level2;
 class Bruth_Force{
     public int[] carpet(int brown, int yellow) {
         int[] answer = new int[2];
