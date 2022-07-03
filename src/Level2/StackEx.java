@@ -37,28 +37,28 @@ public class StackEx {
         return stack.empty() ? 1 : 0;
     }
 
-    //큰 수 만들기
+    // 큰 수 만들기
     // 주어진 수에서 왼쪽부터 k개의 숫자를 뻇을떄 가장 큰 수는?
-    //ex 1231234 3 => 3234
-    //!! 정답이긴 한데
+    // ex 1231234 3 => 3234
+    // !! 정답이긴 한데
     // 스텍을 활용해서 다시 풀어보기
     public String makeBigNum(String number, int k) {
         StringBuffer sb = new StringBuffer();
         int[] nums = new int[number.length()];
-        
+
         int max = -1;
         int maxIndex = -1;
-        
+
         int start = 0;
-        int end = k+1;
+        int end = k + 1;
 
         for (int i = 0; i < number.length(); i++) {
             nums[i] = Character.getNumericValue(number.charAt(i));
         }
-    
-        System.out.println(start+" "+end+" "+max);
 
-        for (int i = 0; i < nums.length-k; i++) {
+        System.out.println(start + " " + end + " " + max);
+
+        for (int i = 0; i < nums.length - k; i++) {
             for (; start < end; start++) {
                 if (max < nums[start]) {
                     max = nums[start];
@@ -69,7 +69,7 @@ public class StackEx {
             end++;
             sb.append(max);
 
-            System.out.println(start+" "+end+" "+max);
+            System.out.println(start + " " + end + " " + max);
 
             max = -1;
         }
@@ -78,30 +78,30 @@ public class StackEx {
 
     // // 시간 초과
     // public int nextBigNum(int n){
-    //     int num = numOfOne(n);
-    //     while(true){
-    //         int temp = numOfOne(++n);
-    //         if(num == temp){
-    //             return n;
-    //         }
-    //     }
-        
+    // int num = numOfOne(n);
+    // while(true){
+    // int temp = numOfOne(++n);
+    // if(num == temp){
+    // return n;
+    // }
+    // }
+
     // }
 
     // private int numOfOne(int n){
-    //     Stack<Integer> stack = new Stack<>();
-    //     int count = 0;
-    //     while(n>1){
-    //         int i = n%2;
-    //         n=n/2;
-    //         stack.add(i);
-    //     }
-    //     stack.add(n);
-    //     while(!stack.isEmpty()){
-    //         int temp = stack.pop();
-    //         if(temp == 1 ) count++;
-    //     }
-    //     return count ;
+    // Stack<Integer> stack = new Stack<>();
+    // int count = 0;
+    // while(n>1){
+    // int i = n%2;
+    // n=n/2;
+    // stack.add(i);
+    // }
+    // stack.add(n);
+    // while(!stack.isEmpty()){
+    // int temp = stack.pop();
+    // if(temp == 1 ) count++;
+    // }
+    // return count ;
     // }
 
     public int skillTree(String skill, String[] skill_trees) {
@@ -121,25 +121,25 @@ public class StackEx {
                 int temp = stack.pop();
                 if (top == -1) {
                     // if (temp > -1) {
-                    //     flag = false;
-                    //     break;
+                    // flag = false;
+                    // break;
                     // }
                 } else {
-                    if(temp == -1){
+                    if (temp == -1) {
                         flag = false;
-                            break;
-                    }else{
+                        break;
+                    } else {
                         if (temp > top) {
                             flag = false;
                             break;
                         }
                     }
-                    
+
                 }
 
                 top = temp;
             }
-            if (flag){
+            if (flag) {
                 System.out.println(j);
 
                 answer++;
@@ -153,24 +153,96 @@ public class StackEx {
         return answer;
     }
 
-    public boolean Bracket(String s ){
+    public boolean Bracket(String s) {
         boolean answer = true;
         char[] charArray = s.toCharArray();
         Stack<Character> stack = new Stack<>();
-        for(int i = 0 ; i< charArray.length;i++){
+        for (int i = 0; i < charArray.length; i++) {
             char temp = charArray[i];
-            if(temp == '('){
+            if (temp == '(') {
                 stack.push(temp);
-            }else{
-                if(!stack.isEmpty()) stack.pop();
-                else{
+            } else {
+                if (!stack.isEmpty())
+                    stack.pop();
+                else {
                     return false;
                 }
             }
         }
-        if(!stack.isEmpty()) answer = false;
+        if (!stack.isEmpty())
+            answer = false;
         return answer;
     }
 
-    
+    public void changeBracket(String p) {
+        Vector<Character> uList = new Vector(); // 앞
+        Vector<Character> vList = new Vector(); // 뒤
+
+        Stack<Character> stack = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+
+        boolean flag =true;
+        int left=0; 
+        int right = 0;
+
+        for (char temp : p.toCharArray()) {
+            uList.add(temp);
+        }
+
+        for(int i = 0 ;i<uList.size();i++){
+            char temp = uList.get(i);
+            if(temp=='('){
+                left++;
+                stack.push(temp);
+            }else{
+                right++;
+                if(stack.isEmpty()){
+                    flag=false;
+                }else{
+                    stack.pop();
+                }
+            }
+            if(left==right){
+                vList=(Vector)uList.subList(i, uList.size());
+                uList=(Vector)uList.subList(0, i);
+                if(flag){
+                    sb.append(uList);
+                    i=0;
+                    break;
+                }else{
+                    uList.remove(0);
+                    uList.remove(uList.size()-1);
+                    for(int k = 0 ;k<uList.size();k++){
+                        char tmp = uList.get(k);
+                        if(tmp=='('){
+                            uList.set(k, ')');
+                        }else{
+                            uList.set(k, '(');
+                        }
+                    }
+                    sb.append('(');
+                    sb.append(vList);
+                    sb.append(')');
+                    sb.append(uList);
+                }
+            }
+        }
+        
+    }
+
+    public int[] stockPrice(int[] prices) {
+        int[] answer = new int[prices.length];
+       for(int i =0 ;i<prices.length;i++){
+           for (int j = i+1 ;j<prices.length;j++){
+               answer[i]++;
+               if(prices[i]<=prices[j]){
+                   continue;
+               }else{
+                   break;
+               }
+           }
+       }
+       return answer;
+   }
+
 }
