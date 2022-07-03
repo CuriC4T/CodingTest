@@ -356,4 +356,92 @@ public class Level2 {
         return sb.toString();
     }
 
+    //정답인데 
+    //주어진 자연수를 연속된 자연수의 합으로 표현하는 방법의 수는 
+    //주어진 수의 홀수 약수의 개수와 같다라는 정수론 정리가 있음
+
+    public int numberSum(int n){
+        int answer = 0;
+        int sum = 0;
+        if(n<3) return 1;
+        for(int i = 1 ; i<= (n/2)+1 ;i++){
+            for(int j = i ;j<= (n/2)+1 ;j++){
+                sum += j;
+                if(sum > n){
+                    break;
+                }else if(sum == n){
+                    System.out.println(i);
+                    answer++;
+                    break;
+                }
+            }
+            sum = 0;
+        }
+        answer++;
+        return answer;
+
+         // int answer = 0;
+    //     for (int i = 1; i <= num; i += 2) {
+    //         if (num % i == 0) {
+    //             answer++;
+    //         }
+    //     }
+    //     return answer;
+    }
+
+    public int tuple(String[][] relation){
+        int answer = 0;
+        String base="안";
+        int[] indexs = new int[relation[0].length];
+        Arrays.fill(indexs, -1);
+        boolean flag = true;
+        if(relation[0].length==1){
+            return relation.length;
+        }
+        for(int i = 0 ;i<relation.length;i++){
+            base = relation[i][0];
+            for(int j = 1 ;j<relation[i].length;j++){
+                String temp = relation[i][j];
+                if(temp.compareTo(base)==0){
+                    indexs[i] = j;
+                    //같은 행에 두 개가 같은 경우
+                    for(int k = i+1 ;k<relation.length;i++){
+                        //if(relation[][])
+                    }
+                    flag = false;
+                    break;
+                }
+                
+            }
+            if(flag){
+                answer++;
+            }else{
+                flag = true;
+            }
+        }
+        return answer;
+    }
+
+    public int joyStick(String name){
+        int answer = 0;
+        int length = name.length();
+        char[] charArray = name.toCharArray();
+        char A = 'A';
+        for(int i = 0 ;i<length;i++){
+            while(A==charArray[i]){
+                if(A=='Z'){
+                    A='Z';
+                }else{
+                    A++;
+                }
+                answer++;
+            }
+            answer++;
+        }
+
+        return answer;
+    }
+
+   
+
 }
