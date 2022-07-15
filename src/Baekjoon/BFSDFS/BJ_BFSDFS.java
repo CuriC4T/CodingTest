@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-class BFSDFS {
+class BJ_BFSDFS {
     public void BFSAndDFS_1260(int N, int M, int V, int[][] data) {
         boolean[] visited = new boolean[N + 1];
         int[][] edge = new int[N+1][N+1];

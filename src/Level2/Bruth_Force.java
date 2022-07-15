@@ -1,5 +1,9 @@
 package Level2;
-class Bruth_Force{
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class Bruth_Force{
     public int[] carpet(int brown, int yellow) {
         int[] answer = new int[2];
          if(yellow==1){
@@ -20,5 +24,32 @@ class Bruth_Force{
          }
         
         return answer;
+    }
+
+    HashSet<Integer> outputSet = new HashSet<>();
+    public int findPrimary(String numbers){
+        int answer =0;
+        int[] nums = new int[numbers.length()];
+        
+        for(int i = 0 ;i<numbers.length();i++){
+            nums[i]=numbers.charAt(i)-'0';
+        }
+
+        System.out.println(numbers.substring(0, numbers.length()-1));
+        
+        return answer;
+    }
+
+    public void permutation(int[] array, int r,int depth){
+        if(depth == r){
+            
+        }
+    }
+
+
+    public void permutaionTest(){
+        int[] permutations = new int[]{1,3,2,4};
+
+
     }
 }
