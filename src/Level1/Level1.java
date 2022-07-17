@@ -211,4 +211,46 @@ public class Level1 {
        
         return answer;
     }
+
+    //Level 1 최소직사각형 (완료)
+    // 가로*세로 주어질때 최소 직사각형 넓이 반환
+    public int minSqual(int[][] sizes) {
+        int answer = 0;
+        int width = 0;
+        int height = 0;
+        for(int i = 0 ;i<sizes.length;i++){
+            int max = Math.max(sizes[i][0],sizes[i][1]);
+            int min = Math.min(sizes[i][0],sizes[i][1]);
+            if(width<max) width = max;
+            if(height<min) height = min;
+
+        }
+
+        return width * height;
+    }
+
+    //Level 1 ç
+    //나눠서 나머지가 1이 나오는 가장 작은 수 찾기
+    public int findRemainder1(int n) {
+        int answer = 0;
+        for (int i = 1 ;i<n;i++){
+            if(n%i==1) {
+             return i;   
+            }
+            
+        }
+        return n;
+    }
+    //Level 1 수박수박수
+    //홀수면 수로 짝이면 박으로 끝
+    public String subaksubak(int n) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0;i<n/2;i++){
+            sb.append("수박");
+        }
+        if(n%2!=0){
+             sb.append("수");
+        }
+        return sb.toString();
+    }
 }
